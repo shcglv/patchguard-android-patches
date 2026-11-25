@@ -54,9 +54,21 @@ Community Patches.
 unchanged: build `.mpp`, generate metadata, sign if configured, publish the GitHub
 release, update generated files and backmerge.
 
+## Release history
+
+| Version | Date | Contents | Signing | Asset SHA-256 |
+|---|---|---|---|---|
+| `v1.0.0` | 2026-11-25 | 3 Ozon 19.31.0 UI patches | Unsigned | `5976619bf788b07bc3aa95fd412fc834490a213d8568cf0c686b2c9abe2d4db4` |
+
+The first release was produced by the official semantic-release workflow. It is
+unsigned: no `MORPHE_SIGNING_KEY` or `morphe-signing.pub` exists yet. Morphe Manager
+accepts unsigned bundles while a source has no pinned key; signing remains a
+recommended follow-up, not a prerequisite for adding the source.
+
 ## Release gate
 
-`PATCHGUARD_RELEASE_ENABLED` is a repository variable, currently `false`.
+`PATCHGUARD_RELEASE_ENABLED` is a repository variable, currently `false` after the
+v1.0.0 release. The Release workflow itself is enabled.
 
 To create a release:
 
@@ -90,7 +102,10 @@ Do not create releases by hand and do not edit generated files.
   manually; the repository setting is `false`.
 - Required PR/status-check rules are not enabled yet; the release identity must be
   configured first, otherwise semantic-release cannot push its generated commit.
-- No release exists yet; `patches-bundle.json` is still the template placeholder.
-  Adding the repository to Morphe Manager before a release will not work.
+- `v1.0.0` is unsigned. Morphe Manager accepts it while no signing key is pinned,
+  but a future signed release will pin the new key and require user confirmation.
+- The release contains three Ozon 19.31.0 UI patches ported from Jl4cTuk under
+  GPL-3.0. No runtime or target-APK test was performed; compatibility is declared,
+  not proven.
 - This page records technical deviations, not legal advice. Third-party code reuse
   remains subject to GPL-3.0 and the original attribution.
