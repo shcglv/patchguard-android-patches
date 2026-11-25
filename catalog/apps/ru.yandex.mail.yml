@@ -1,0 +1,13 @@
+slug: ru.yandex.mail
+name: Yandex Mail
+package_name: ru.yandex.mail
+developer: null
+category: productivity
+security_class: NORMAL
+supported_versions:
+- 9.30.1
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil. Unique patch names observed: 3. See docs/catalog/initial-intake-2026-11-25.md. No full static audit
+  or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

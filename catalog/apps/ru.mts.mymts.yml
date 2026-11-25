@@ -1,0 +1,13 @@
+slug: ru.mts.mymts
+name: MTS
+package_name: ru.mts.mymts
+developer: null
+category: telecom
+security_class: NORMAL
+supported_versions:
+- '6.77'
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil. Unique patch names observed: 3. See docs/catalog/initial-intake-2026-11-25.md. No full static audit
+  or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

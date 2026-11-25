@@ -1,0 +1,20 @@
+slug: github-jl4ctuk-morphe-patches
+name: Jl4cTuk Morphe Patches
+repository_url: https://github.com/Jl4cTuk/morphe-patches
+host: github.com
+owner: Jl4cTuk
+source_type: github_repository
+license: GPL-3.0
+license_evidence: https://github.com/Jl4cTuk/morphe-patches/blob/8670317938ee76d0968fde57379ff57b52a79f69/LICENSE
+trust_level: COMMUNITY
+tracked_branch: main
+last_checked_commit: 8670317938ee76d0968fde57379ff57b52a79f69
+latest_release: v1.4.0
+last_checked_at: '2026-11-25T04:14:17Z'
+repository_status: ACTIVE
+aliases: []
+notes: >-
+  Initial intake 2026-11-25. 24 app-specific patch entries, 0 universal,
+  3 application groups (Ozon, Ozon Bank, RuStore). 24 unique implementations
+  within the source. No full static audit, build, APK or runtime verification
+  performed. See docs/catalog/initial-intake-2026-11-25.md.

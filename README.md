@@ -47,6 +47,8 @@ No PatchGuard patch release has been published yet. After the first release, thi
 
 The full audit catalog is in [`catalog/`](catalog/) and the published documentation site. The table above only lists PatchGuard's own bundle; external patches are cataloged separately and are never presented as part of the PatchGuard bundle.
 
+Initial external-source intake (2026-11-25): [docs/catalog/initial-intake-2026-11-25.md](docs/catalog/initial-intake-2026-11-25.md). This is inventory and triage, not approval and not runtime verification.
+
 ## Audit status legend
 
 | Status | Meaning |

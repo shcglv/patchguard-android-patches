@@ -1,0 +1,20 @@
+slug: github-xob0t-morphe-patches
+name: xob0t Morphe Patches
+repository_url: https://github.com/xob0t/morphe-patches
+host: github.com
+owner: xob0t
+source_type: github_repository
+license: GPL-3.0
+license_evidence: https://github.com/xob0t/morphe-patches/blob/b88dbe8c8bc8517005a7308865fd92023b6a2358/LICENSE
+trust_level: COMMUNITY
+tracked_branch: main
+last_checked_commit: b88dbe8c8bc8517005a7308865fd92023b6a2358
+latest_release: v1.14.19
+last_checked_at: '2026-11-25T04:14:17Z'
+repository_status: ACTIVE
+aliases: []
+notes: >-
+  Initial intake 2026-11-25. 25 patch entries: 12 app-specific, 13 universal.
+  4 application groups. All entries pinned to the checked commit. No full static
+  audit, build, APK or runtime verification performed. See
+  docs/catalog/initial-intake-2026-11-25.md.
