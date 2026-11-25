@@ -40,9 +40,11 @@ The repository also contains PatchGuard's own Morphe-compatible patch bundle. Ev
 ## Patch catalog
 
 <!-- PATCHES_START -->
+> **[v1.0.0](https://github.com/shcglv/patchguard-android-patches/releases/tag/v1.0.0)**&nbsp;&nbsp;&middot;&nbsp;&nbsp;`main`&nbsp;&nbsp;&middot;&nbsp;&nbsp;**3 patches** across **1 app**&nbsp;&nbsp;&middot;&nbsp;&nbsp;[Full details](PATCHES.md)
 
-No PatchGuard patch release has been published yet. After the first release, this section is generated from `patches-list.json` by the official Morphe release workflow.
-
+| # | App | Patches | Version | Package |
+|---|---|---|---|---|
+| 1 | [**Ozon**](PATCHES.md#ozon-ruozonappandroid) | 3 | `19.31.0` | [`ru.ozon.app.android`](https://play.google.com/store/apps/details?id=ru.ozon.app.android) |
 <!-- PATCHES_END -->
 
 The full audit catalog is in [`catalog/`](catalog/) and the published documentation site. The table above only lists PatchGuard's own bundle; external patches are cataloged separately and are never presented as part of the PatchGuard bundle.

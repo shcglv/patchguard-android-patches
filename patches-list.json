@@ -1,5 +1,102 @@
 {
   "NOTE": "Do NOT manually edit this file. This file is automatically updated when semantic release (release.yml) runs. Manually editing this file can break your releases and break third party tools that use this file.",
-  "version": "0.0.0",
-  "patches": []
+  "version": "1.0.0",
+  "patches": [
+    {
+      "name": "Disable checkout tips",
+      "description": "Removes courier tips UI and prevents tip IDs or tip API calls from being submitted.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "ru.ozon.app.android",
+          "name": "Ozon",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#005BFF",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "19.31.0",
+              "versionCodes": {
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Hide seller rating prompt",
+      "description": "Removes the post-purchase seller rating prompt.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "ru.ozon.app.android",
+          "name": "Ozon",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#005BFF",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "19.31.0",
+              "versionCodes": {
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Show final prices only",
+      "description": "Hides crossed-out prices, discount percentages, and redundant price rows in the cart total.",
+      "default": true,
+      "category": null,
+      "compatiblePackages": [
+        {
+          "packageName": "ru.ozon.app.android",
+          "name": "Ozon",
+          "description": null,
+          "apkFileType": "APK",
+          "appIconColor": "#005BFF",
+          "signatures": null,
+          "formFactor": "MOBILE",
+          "targets": [
+            {
+              "version": "19.31.0",
+              "versionCodes": {
+                "ARM64_V8A": 2706,
+                "ARMEABI_V7A": 2706,
+                "X86_64": 2706,
+                "X86": 2706
+              },
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    }
+  ]
 }
