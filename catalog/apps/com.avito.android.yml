@@ -1,0 +1,28 @@
+slug: com.avito.android
+name: Avito
+package_name: com.avito.android
+developer: null
+category: marketplace
+security_class: NORMAL
+supported_versions:
+- '229.1'
+- '230.0'
+- '230.5'
+- '231.0'
+- '231.5'
+- '232.0'
+- '233.1'
+- '233.5'
+- '234.0'
+- '234.5'
+- '235.1'
+- '235.5'
+- '236.1'
+- '236.6'
+- '237.5'
+- '238.0'
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil, xob0t. Unique patch names observed: 12. See docs/catalog/initial-intake-2026-11-25.md. No full static
+  audit or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

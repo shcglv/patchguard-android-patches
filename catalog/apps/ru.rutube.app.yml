@@ -1,0 +1,14 @@
+slug: ru.rutube.app
+name: RuTube
+package_name: ru.rutube.app
+developer: null
+category: media
+security_class: NORMAL
+supported_versions:
+- 31.14.2-rustore
+- 31.17.2-rustore
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil. Unique patch names observed: 10. See docs/catalog/initial-intake-2026-11-25.md. No full static audit
+  or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

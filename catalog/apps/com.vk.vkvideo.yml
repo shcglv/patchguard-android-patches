@@ -1,0 +1,14 @@
+slug: com.vk.vkvideo
+name: VK Video
+package_name: com.vk.vkvideo
+developer: null
+category: media
+security_class: NORMAL
+supported_versions:
+- '1.163'
+- '1.165'
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil. Unique patch names observed: 21. See docs/catalog/initial-intake-2026-11-25.md. No full static audit
+  or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

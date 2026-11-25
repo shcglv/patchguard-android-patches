@@ -1,0 +1,23 @@
+slug: github-basil-as-ru-apps-patches
+name: Basil-AS RU Apps Patches
+repository_url: https://github.com/Basil-AS/ru-apps-patches
+host: github.com
+owner: Basil-AS
+source_type: github_repository
+license: GPL-3.0
+license_evidence: https://github.com/Basil-AS/ru-apps-patches/blob/942c2ac926673db3c49c1a581ed3a9891e47023c/LICENSE
+trust_level: COMMUNITY
+tracked_branch: main
+last_checked_commit: 942c2ac926673db3c49c1a581ed3a9891e47023c
+latest_release: v1.4.0
+last_checked_at: '2026-11-25T04:14:17Z'
+repository_status: ACTIVE
+aliases: []
+notes: >-
+  Initial intake 2026-11-25. 90 patch entries: 71 app-specific entries,
+  3 multi-app entries covering 29 packages each, 16 universal. 30 unique
+  package names including the Example app; 176 real app/universal rows
+  excluding Example. 89 unique implementations within the source. HEAD is
+  27 minutes newer than release v1.4.0; the exact release commit remains to
+  be verified. No full static audit, build, APK or runtime verification
+  performed. See docs/catalog/initial-intake-2026-11-25.md.

@@ -16,14 +16,25 @@ Morphe is referenced only as a compatible platform. No Morphe logo, branding, or
 
 ## Cataloged sources and patches
 
+Initial intake on 2026-11-25 recorded these community sources:
+
+- **xob0t Morphe Patches** — https://github.com/xob0t/morphe-patches — GPL-3.0.
+- **Basil-AS RU Apps Patches** — https://github.com/Basil-AS/ru-apps-patches — GPL-3.0.
+- **Jl4cTuk Morphe Patches** — https://github.com/Jl4cTuk/morphe-patches — GPL-3.0.
+
+No third-party patch code has been copied into PatchGuard. The intake records links, provenance and preliminary classifications only. Basil-AS explicitly credits xob0t and Jl4cTuk in its source comments; those notices must be preserved if any code is later reused.
+
 Attribution for each cataloged source and patch is recorded in:
 
 - `catalog/sources/*.yml`
 - `catalog/patches/**/*.yml`
 - `audits/records/**/report.md`
+- `audits/exclusions/**`
+- `reports/security/**`
+- [`docs/catalog/initial-intake-2026-11-25.md`](docs/catalog/initial-intake-2026-11-25.md)
 - `SOURCES.md`
 
-At the time of repository bootstrap, no external patch has been cataloged or reviewed. This section will be updated with each review; entries are not invented.
+No external patch has been approved, merged or distributed. Entries are not invented.
 
 ## Tools
 

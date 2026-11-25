@@ -1,0 +1,13 @@
+slug: ru.yandex.weatherplugin
+name: Yandex Weather
+package_name: ru.yandex.weatherplugin
+developer: null
+category: weather
+security_class: NORMAL
+supported_versions:
+- 26.10.10
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil. Unique patch names observed: 3. See docs/catalog/initial-intake-2026-11-25.md. No full static audit
+  or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

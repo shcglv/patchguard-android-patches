@@ -1,0 +1,13 @@
+slug: ru.nspk.mirpay
+name: Mir Pay
+package_name: ru.nspk.mirpay
+developer: null
+category: finance
+security_class: CRITICAL
+supported_versions:
+- 1.64.5.350
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil. Unique patch names observed: 3. See docs/catalog/initial-intake-2026-11-25.md. No full static audit
+  or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

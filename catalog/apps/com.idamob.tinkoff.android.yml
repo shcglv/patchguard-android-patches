@@ -1,0 +1,23 @@
+slug: com.idamob.tinkoff.android
+name: T-Bank
+package_name: com.idamob.tinkoff.android
+developer: null
+category: finance
+security_class: CRITICAL
+supported_versions:
+- 7.39.0
+- 7.40.1
+- 8.0.0
+- 8.1.0
+- 8.2.1
+- 8.2.3
+- 8.3.0
+- 8.4.2
+- 8.6.0
+- 8.7.0
+- 8.7.1
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil, xob0t. Unique patch names observed: 8. See docs/catalog/initial-intake-2026-11-25.md. No full static
+  audit or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'

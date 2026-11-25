@@ -54,6 +54,8 @@ nav:
       - Static-only audit: methodology/static-audit.md
       - Statuses: methodology/statuses.md
       - Risk scoring: methodology/risk-scoring.md
+  - Catalog:
+      - Initial intake 2026-11-25: catalog/initial-intake-2026-11-25.md
   - Compatibility: compatibility.md
   - How to use: how-to-use.md
   - How to contribute: how-to-contribute.md

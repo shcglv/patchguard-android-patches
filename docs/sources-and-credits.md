@@ -12,7 +12,15 @@ Morphe is referenced only as a compatible platform. No Morphe logo or official e
 
 ## Cataloged sources
 
-Every source and patch record contains:
+Initial intake on 2026-11-25 recorded three community sources:
+
+- [xob0t/morphe-patches](https://github.com/xob0t/morphe-patches) — GPL-3.0, HEAD `b88dbe8c8bc8517005a7308865fd92023b6a2358`.
+- [Basil-AS/ru-apps-patches](https://github.com/Basil-AS/ru-apps-patches) — GPL-3.0, HEAD `942c2ac926673db3c49c1a581ed3a9891e47023c`.
+- [Jl4cTuk/morphe-patches](https://github.com/Jl4cTuk/morphe-patches) — GPL-3.0, HEAD `8670317938ee76d0968fde57379ff57b52a79f69`.
+
+Basil-AS source comments explicitly credit xob0t and Jl4cTuk for ported code. Those notices must be preserved if code is later reused.
+
+Every future source and patch record must contain:
 
 - Original author.
 - Original repository.
@@ -23,9 +31,7 @@ Every source and patch record contains:
 - Related issues, pull requests and documentation.
 - Attribution text.
 
-PatchGuard links to sources it does not have the right to redistribute. It does not copy third-party code without a compatible license.
-
-At repository bootstrap, no external source has been reviewed; the catalog is empty by design.
+PatchGuard links to sources it does not have the right to redistribute. It does not copy third-party code without a compatible license. No external patch has been approved, merged or distributed.
 
 ## Tools
 

@@ -1,0 +1,15 @@
+slug: ru.vk.store
+name: RuStore
+package_name: ru.vk.store
+developer: null
+category: app_store
+security_class: NORMAL
+supported_versions:
+- 1.108.0.2
+- 1.109.1.0
+- 1.111.0.3
+official_website: null
+notes: 'Initial intake 2026-11-25. Sources: basil, jl4ctuk. Unique patch names observed: 17. See docs/catalog/initial-intake-2026-11-25.md. No full
+  static audit or runtime testing performed.'
+created_at: '2026-11-25T04:14:17Z'
+updated_at: '2026-11-25T04:14:17Z'
