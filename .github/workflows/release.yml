@@ -3,6 +3,11 @@ name: Release
 on:
   workflow_dispatch:
   push:
+    # Stable and development releases only. Other branches are validated by
+    # .github/workflows/validate.yml and do not run the release pipeline.
+    branches:
+      - main
+      - dev
 
 jobs:
   release:
