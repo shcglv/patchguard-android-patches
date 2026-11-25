@@ -3,7 +3,8 @@
 PatchGuard has two parts:
 
 1. A **public catalog and audit archive** that you can read immediately.
-2. An **optional Morphe-compatible patch bundle** that becomes usable only after a release exists.
+2. A **Morphe-compatible patch bundle**. Version `v1.0.0` is published and can be
+   added to Morphe Manager.
 
 ## Read the catalog
 
@@ -22,34 +23,32 @@ Every patch card states:
 
 ## Add the patch source to Morphe Manager
 
-Only do this after the repository has published a release with:
+Open the deep link:
 
-- A `.mpp` asset.
-- A valid root `patches-bundle.json`.
-- A `patches-list.json`.
-- Optionally, a signature and public key.
+<https://morphe.software/add-source?github=shcglv/patchguard-android-patches>
 
-Then add the repository URL in Morphe Manager:
+Or add the repository manually in **Morphe Manager → Sources → + → Remote**:
 
 ```text
 https://github.com/shcglv/patchguard-android-patches
 ```
 
-PatchGuard does not currently claim that its bundle works on any target app. The repository publishes patches under a static-only review model; read each patch card before using it.
+The `v1.0.0` source publishes three Ozon 19.31.0 UI patches: Disable checkout
+tips, Hide seller rating prompt, and Show final prices only. The release is
+unsigned; Manager accepts it while no signing key is pinned. No target APK was
+patched or launched, so compatibility is declared rather than runtime-verified.
 
 !!! warning
     Only add patch sources you trust. A patch source decides what ends up inside your patched apps. PatchGuard's static review is evidence, not a guarantee.
 
-## Verify a release
+## Verify the v1.0.0 release
 
-If a release exists:
+1. Download `patches-1.0.0.mpp` from the [v1.0.0 release](https://github.com/shcglv/patchguard-android-patches/releases/tag/v1.0.0).
+2. Compare its SHA-256 with `5976619bf788b07bc3aa95fd412fc834490a213d8568cf0c686b2c9abe2d4db4`.
+3. The release is unsigned; if a future release is signed, verify the key fingerprint shown by Morphe Manager.
+4. Read the [verification report](https://github.com/shcglv/patchguard-android-patches/blob/main/reports/releases/v1.0.0.md).
 
-1. Download the `.mpp` asset from the release page.
-2. Compare its SHA-256 with the value recorded in `catalog/releases/`.
-3. If the release is signed, verify the public key fingerprint shown by Morphe Manager.
-4. Read the release notes and the relevant patch card.
-
-Do not install a patched app if the signature or hash does not match.
+Do not install a patched app if the hash does not match.
 
 ## What PatchGuard cannot tell you
 
