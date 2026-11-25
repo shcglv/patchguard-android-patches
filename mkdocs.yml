@@ -62,6 +62,8 @@ nav:
   - Sources and credits: sources-and-credits.md
   - Security policy: security-policy.md
   - Threat model: threat-model.md
+  - Maintenance:
+      - Upstream template: maintenance/upstream-template.md
   - Internal runbooks:
       - Overview: internal/README.md
       - Bootstrap: internal/runbooks/bootstrap.md
