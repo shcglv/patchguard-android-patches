@@ -3,10 +3,18 @@ name: Release
 on:
   workflow_dispatch:
   push:
+    # Stable and development releases only. Other branches are validated by
+    # .github/workflows/validate.yml and do not run the release pipeline.
+    branches:
+      - main
+      - dev
 
 jobs:
   release:
     name: Release
+    # Release is intentionally gated until the owner enables it at Stage 6.
+    # Set the repository variable PATCHGUARD_RELEASE_ENABLED=true to release.
+    if: vars.PATCHGUARD_RELEASE_ENABLED == 'true'
     permissions:
       contents: write
       packages: write
