@@ -60,4 +60,6 @@ nav:
   - Sources and credits: sources-and-credits.md
   - Security policy: security-policy.md
   - Threat model: threat-model.md
-  - Internal runbooks: internal/README.md
+  - Internal runbooks:
+      - Overview: internal/README.md
+      - Bootstrap: internal/runbooks/bootstrap.md
