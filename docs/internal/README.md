@@ -9,13 +9,13 @@ This directory contains maintainer-facing runbooks. Public project documentation
 - Record exact commands, expected results, rollback steps and evidence paths.
 - Update the runbook after every incident or process change.
 
-## Planned runbooks
+## Runbooks
 
-- `bootstrap.md` — repository creation, rulesets, release identity.
-- `release.md` — static gate, signing, release verification.
-- `update-check.md` — weekly source checks and re-audit queue.
-- `key-rotation.md` — signing key rotation and user communication.
-- `incident.md` — compromised key, artifact, or catalog record.
-- `community-submission.md` — preflight, application text, submission record.
+- `runbooks/bootstrap.md` — Stage 0 status, repository creation, settings, release gate (exists).
+- `runbooks/release.md` — static gate, signing, release verification (planned).
+- `runbooks/update-check.md` — weekly source checks and re-audit queue (planned).
+- `runbooks/key-rotation.md` — signing key rotation and user communication (planned).
+- `runbooks/incident.md` — compromised key, artifact, or catalog record (planned).
+- `runbooks/community-submission.md` — preflight, application text, submission record (planned).
 
-At Stage 0, only this index exists. Runbooks are added when the corresponding process is implemented; empty placeholder files are intentionally avoided.
+Runbooks are added when the corresponding process is implemented; empty placeholder files are intentionally avoided.
