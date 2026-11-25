@@ -67,15 +67,28 @@ Initial external-source intake (2026-11-25): [docs/catalog/initial-intake-2026-1
 
 `APPROVED` is not an audit status. It is a separate distribution decision by the project owner and is recorded in `catalog/decisions/`.
 
-## How to use PatchGuard patches
+## Add to Morphe
 
-PatchGuard's own bundle is intended for use with Morphe Manager once a release exists:
+<a href="https://morphe.software/add-source?github=shcglv/patchguard-android-patches">
+  <img src=".github/assets/add-to-morphe.svg" alt="Add to Morphe" height="48">
+</a>
+
+Or add the source manually in **Morphe Manager → Sources → + → Remote**:
 
 ```text
 https://github.com/shcglv/patchguard-android-patches
 ```
 
-Until a release with a valid `patches-bundle.json` and a signed `.mpp` asset is published, the repository is not a usable patch source. The catalog is readable immediately; the bundle is not.
+The `v1.0.0` source publishes three Ozon 19.31.0 UI patches:
+
+- Disable checkout tips
+- Hide seller rating prompt
+- Show final prices only
+
+The release is **unsigned**; Morphe Manager accepts it while no signing key is
+pinned for this source. It is a static-only preview: no target APK was patched or
+launched, so compatibility is declared rather than runtime-verified. See the
+[v1.0.0 verification report](reports/releases/v1.0.0.md).
 
 > [!WARNING]
 > Patch sources decide what ends up inside patched apps. Only add sources you trust. PatchGuard publishes its review evidence, but static review cannot prove runtime safety or compatibility.
