@@ -1,91 +1,98 @@
-# Bootstrap runbook — G1/G2
+# Bootstrap runbook — Stage 0 / G1-G2
 
-Статус: Stage 0 завершён локально. Публичный репозиторий ещё не создан.
+Статус: **Stage 0 выполнен**. Публичный репозиторий создан и опубликован.
 
-## Что уже готово
+- Репозиторий: https://github.com/shcglv/patchguard-android-patches
+- Default branch: `main`
+- Ветки: `main`, `dev`
+- Лицензия: GPL-3.0-only (из шаблона)
+- Релизов и тегов пока нет
+- `Validate` на `main` и `dev`: успешно
+- `Release` намеренно пропускается до Stage 6
 
-- Локальный репозиторий `C:\Users\shcgl\Desktop\morphe` на ветке `dev`.
-- История официального шаблона Morphe сохранена; поверх неё один коммит `chore:`.
-- Governance-документы, static-only политика, схемы, SQLite-схема, CLI-каркас, тесты и документация.
-- `pytest`: 13 passed; `patchguard validate`: OK; `mkdocs build --strict`: OK.
-- Локальная БД и `site/` gitignored.
+## Что сделано
+
+1. Локальный репозиторий создан как клон официального шаблона Morphe на commit
+   `4cb966a5aa5ea70725aa5eb4531eea8f0e5549e6`.
+2. Поверх шаблона добавлены governance-документы, static-only политика, схемы,
+   SQLite-схема, CLI-каркас, тесты, документация и брендинг.
+3. Пакеты шаблона переименованы из `app.template` в `app.patchguard`.
+4. Создан пустой публичный репозиторий `shcglv/patchguard-android-patches`.
+5. Опубликованы `main` и `dev`; `main` был fast-forward до `dev` до первого push.
+6. Настроены базовые security settings и минимальный ruleset.
+7. `dev` влит в `main` merge-коммитом; default branch отображает PatchGuard.
+8. `Release` закрыт repository variable `PATCHGUARD_RELEASE_ENABLED=false`.
 
 ## Почему не «Use this template» на GitHub
 
-Локальный репозиторий уже является клоном официального шаблона на commit
-`4cb966a5aa5ea70725aa5eb4531eea8f0e5549e6` с нашей историей. Создание репозитория
-через GitHub template дало бы независимую историю, которую пришлось бы
-объединять или force-push’ить. Вместо этого создаётся пустой публичный
-репозиторий, и в него публикуются локальные ветки. Содержимое, структура и
-release pipeline шаблона при этом сохраняются.
+Локальный репозиторий уже содержит историю официального шаблона. Создание через
+GitHub template дало бы независимую историю, которую пришлось бы объединять или
+force-push’ить. Вместо этого создан пустой репозиторий и опубликованы локальные
+ветки. Структура, Gradle-модули и release pipeline шаблона сохранены.
 
-## Предусловия
+## Фактические настройки GitHub
 
-- `gh` установлен и аутентифицирован с доступами `repo`, `workflow`.
-- Для локальной сборки `.mpp` — PAT `read:packages` в `~/.gradle/gradle.properties`.
-- На C: достаточно места; Gradle home и quarantine — на E:.
-- Владелец подтвердил G1 и G2.
+- Public repository, default branch `main`.
+- Topics: `android`, `morphe`, `patches`, `security-audit`, `supply-chain`,
+  `static-analysis`.
+- Secret scanning и push protection: включены.
+- Vulnerability alerts и automated security fixes: включены.
+- Private vulnerability reporting: включено.
+- Actions: включены; workflow permissions по умолчанию `read`;
+  разрешено создание PR из Actions.
+- Ruleset `Protect main and dev from deletion and force-push`: запрещает
+  удаление и force-push для `main`/`dev`.
+- Repository variable `PATCHGUARD_RELEASE_ENABLED=false`.
+- `Release` workflow: `if: vars.PATCHGUARD_RELEASE_ENABLED == 'true'`, поэтому
+  push в `main`/`dev` создаёт skipped run, а не релиз.
 
-## G2: установка и аутентификация
+## Ограничения и принятые решения
+
+- `gh` не установлен: MSI-установка через winget зависла на этапе elevation.
+  Для создания репозитория и push использован уже сохранённый Git credential
+  через одноразовый in-memory `Authorization` header. Токен не печатался,
+  не коммитился и не сохранялся в файлы.
+- `sha_pinning_required=true` в GitHub Actions оказался неприменим для
+  personal-репозитория: runner отклонил `actions/checkout` и
+  `actions/setup-python` с формулировкой «all actions must be from a repository
+  owned by shcglv». Политика отключена; все actions в workflow-файлах
+  закреплены полным commit SHA вручную. Это residual risk, пока GitHub не
+  поддержит политику для personal-репозиториев.
+- Требование PR и required checks пока не включены: сначала нужен
+  release-identity (PAT/App), иначе официальный semantic-release не сможет
+  делать прямые push’и сгенерированных файлов.
+- `Release` отключён до Stage 6, чтобы первый push не создал релиз и не
+  расходовал CI на сборку без `read:packages`.
+
+## Что осталось до Stage 6
+
+1. Создать PAT `read:packages` и сохранить в `~/.gradle/gradle.properties`
+   (не в репозитории).
+2. Проверить `./gradlew :patches:buildAndroid` с JDK 21 и `GRADLE_USER_HOME`
+   на E:.
+3. Настроить release-identity (fine-grained PAT `RELEASE_TOKEN` или GitHub App)
+   и добавить его в bypass ruleset.
+4. Включить required PR + `Validate` check для `main`/`dev` после тестового
+   релиза.
+5. Включить CodeQL и разобрать Dependabot PR.
+6. Включить GitHub Pages только после отдельного разрешения.
+7. Установить `PATCHGUARD_RELEASE_ENABLED=true` только перед первым
+   контролируемым релизом.
+
+## Проверка
 
 ```powershell
-winget install --id GitHub.cli --accept-source-agreements --accept-package-agreements
-gh auth login --hostname github.com --git-protocol https --scopes repo,workflow,read:packages
-gh auth status
-```
-
-Если `gh auth login` выполняется в браузере, владелец завершает вход сам.
-Токен не передаётся в чат и не коммитится.
-
-## G1: создание пустого репозитория и публикация веток
-
-```powershell
-# 1. Создать пустой публичный репозиторий (без README и лицензии).
-gh repo create shcglv/patchguard-android-patches --public `
-  --description "Independent static-only review catalog and Morphe-compatible patch bundle"
-
-# 2. Переключить remote с шаблона на новый репозиторий.
-git remote remove origin
-git remote add origin https://github.com/shcglv/patchguard-android-patches.git
-
-# 3. Сделать main равным dev (main — предок dev, fast-forward без force-push).
-git checkout main
-git merge --ff-only dev
-git checkout dev
-
-# 4. Опубликовать main первым, чтобы он стал default branch.
-git push -u origin main
-git push -u origin dev
-```
-
-Проверить:
-
-```powershell
-gh repo view shcglv/patchguard-android-patches --web
-gh run list --limit 5
 git status
+git log --oneline --decorate -5
+git remote -v
 ```
 
-Ожидаемо: репозиторий публичный, default branch `main`, обе ветки на одном
-коммите; Actions запускает `Validate` и `Release` (release не должен создать
-релиз, потому что коммит `chore:`).
-
-## Если Release workflow упал
-
-- `Release` на первом push может упасть из-за GitHub Packages authentication
-  или Android SDK. Это не блокирует публикацию исходников; зафиксировать лог.
-- Не включать branch protection до успешного тестового прогона release.
-- Не публиковать релиз вручную.
-
-## После публикации (не входит в этот runbook)
-
-1. Включить secret scanning/push protection, Dependabot, CodeQL, private
-   vulnerability reporting.
-2. Настроить rulesets и release identity.
-3. Включить GitHub Pages.
-4. Только после отдельного разрешения — первый `.mpp` pre-release.
+Ожидаемо: `main` содержит merge-коммит bootstrap, `dev` — рабочую ветку,
+`origin` указывает на PatchGuard, рабочее дерево чистое (кроме gitignored
+`.patchguard/`, `site/`).
 
 ## Откат
 
 До появления релизов откат — удаление публичного репозитория после отдельного
-подтверждения владельца. Локальная история сохраняется.
+подтверждения владельца. Локальная история сохраняется. После появления
+релизов откат выполняется только новым релизом, без удаления истории.

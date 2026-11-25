@@ -8,6 +8,7 @@
 
 [![License: GPL-3.0-only](https://img.shields.io/badge/license-GPL--3.0--only-2ea043.svg)](LICENSE)
 [![Audit model: static-only](https://img.shields.io/badge/audit%20model-static--only-f2a93b.svg)](docs/methodology/static-audit.md)
+[![Validate](https://github.com/shcglv/patchguard-android-patches/actions/workflows/validate.yml/badge.svg?branch=main)](https://github.com/shcglv/patchguard-android-patches/actions/workflows/validate.yml)
 
 </div>
 
