@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shcglv/patchguard-android-patches/schemas/compatibility.schema.json",
+  "title": "Compatibility assessment",
+  "description": "A static-only compatibility statement for one patch and app version.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "patch",
+    "basis",
+    "runtime_tested"
+  ],
+  "properties": {
+    "patch": {
+      "type": "string"
+    },
+    "app_version": {
+      "type": ["string", "null"]
+    },
+    "version_code": {
+      "type": ["integer", "null"]
+    },
+    "basis": {
+      "type": "string",
+      "enum": ["DECLARED", "STATICALLY_ASSESSED", "NOT_RUNTIME_TESTED"]
+    },
+    "runtime_tested": {
+      "const": false
+    },
+    "evidence": {
+      "type": ["string", "null"]
+    },
+    "notes": {
+      "type": ["string", "null"]
+    },
+    "assessed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    }
+  }
+}

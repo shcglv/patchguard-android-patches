@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">PatchGuard</title>
+  <desc id="desc">An original geometric shield with stitch marks, representing a guarded patch.</desc>
+  <defs>
+    <linearGradient id="pg-edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2A93B"/>
+      <stop offset="1" stop-color="#39D98A"/>
+    </linearGradient>
+    <linearGradient id="pg-inner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B222B"/>
+      <stop offset="1" stop-color="#101418"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Shield body -->
+  <path d="M256 36 L436 104 V258 C436 360 356 438 256 476 C156 438 76 360 76 258 V104 Z"
+        fill="url(#pg-inner)" stroke="url(#pg-edge)" stroke-width="18" stroke-linejoin="round"/>
+
+  <!-- Inner bevel -->
+  <path d="M256 78 L396 132 V256 C396 334 336 396 256 430 C176 396 116 334 116 256 V132 Z"
+        fill="none" stroke="#2A3441" stroke-width="6"/>
+
+  <!-- Stitch lines: deliberate, hand-stitched patch motif -->
+  <path d="M168 196 H344" stroke="#F2A93B" stroke-width="16" stroke-linecap="round" stroke-dasharray="30 22"/>
+  <path d="M168 256 H344" stroke="#39D98A" stroke-width="16" stroke-linecap="round" stroke-dasharray="30 22"/>
+  <path d="M168 316 H288" stroke="#F2A93B" stroke-width="16" stroke-linecap="round" stroke-dasharray="30 22"/>
+
+  <!-- Guard node -->
+  <circle cx="344" cy="316" r="16" fill="#39D98A"/>
+  <circle cx="344" cy="316" r="7" fill="#101418"/>
+</svg>

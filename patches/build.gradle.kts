@@ -10,18 +10,17 @@ plugins {
     alias(libs.plugins.animalsniffer)
 }
 
-group = "app.template"
+group = "app.patchguard"
 
 patches {
-    // TODO: Update this section with your project details.
     about {
-        name = "UserXYZ Patches"
-        description = "Patches for apps I like"
-        source = "git@github.com:UserXYZ/morphe-patches.git"
-        author = "Awesome dev"
-        contact = "na"
-        website = "na"
-        license = "GPLv3"
+        name = "PatchGuard Patches"
+        description = "Statically reviewed patches for Morphe-compatible patch bundles"
+        source = "https://github.com/shcglv/patchguard-android-patches"
+        author = "PatchGuard maintainers"
+        contact = "https://github.com/shcglv/patchguard-android-patches/security/advisories/new"
+        website = "https://github.com/shcglv/patchguard-android-patches"
+        license = "GPL-3.0-only"
     }
 }
 

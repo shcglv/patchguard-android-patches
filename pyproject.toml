@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "patchguard-android-patches"
+version = "0.1.0"
+description = "Static-only security review tooling and catalog for Android patch code"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "GPL-3.0-only"
+authors = [
+  { name = "PatchGuard maintainers" }
+]
+keywords = ["android", "morphe", "patches", "security", "static-analysis", "supply-chain"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Security",
+]
+dependencies = [
+  "PyYAML>=6.0.1,<7",
+  "jsonschema>=4.20,<5",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<10",
+]
+docs = [
+  "mkdocs-material>=9.5,<10",
+]
+
+[project.scripts]
+patchguard = "patchguard.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "tools" }
+
+[tool.setuptools.packages.find]
+where = ["tools"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tools", "."]
+addopts = "-q"

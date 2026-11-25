@@ -1,0 +1,83 @@
+# Risk scoring rules for PatchGuard's static-only model.
+# The score is a heuristic, not a probability of compromise.
+
+scale:
+  min: 0
+  max: 100
+
+dimensions:
+  provenance:
+    weight: 15
+    description: Author identity, repository history, commit consistency, release provenance.
+  source_transparency:
+    weight: 10
+    description: Readable source, no unexplained binaries, no obfuscation, clear build scripts.
+  manifest_permissions:
+    weight: 10
+    description: Permissions and components declared by the patch or extension source.
+  network:
+    weight: 15
+    description: Network APIs, destinations and data passed in source code.
+  dependencies:
+    weight: 10
+    description: Dependency provenance, versions, licenses and known vulnerabilities.
+  code_changes:
+    weight: 10
+    description: Size and sensitivity of the modifications, dead code, unusual control flow.
+  security_sensitive:
+    weight: 15
+    description: Authentication, TLS, integrity, tokens, crypto, anti-fraud, accessibility.
+  static_analysis:
+    weight: 10
+    description: Semgrep, secret scanning, custom rules and manual review coverage.
+  known_vulnerabilities:
+    weight: 5
+    description: Known CVEs affecting the patch or its dependencies.
+
+bands:
+  - max: 19
+    label: low
+    meaning: No significant concerns found in the reviewed scope; runtime remains unknown.
+  - max: 39
+    label: moderate
+    meaning: Some concerns or missing evidence; review limitations carefully.
+  - max: 59
+    label: elevated
+    meaning: Material concerns; distribution requires explicit owner acceptance.
+  - max: 79
+    label: high
+    meaning: Serious concerns; default to rejection unless the owner accepts the risk.
+  - max: 100
+    label: critical
+    meaning: Critical finding or unacceptable policy risk; blocked.
+
+critical_findings:
+  # Any of these forces score 100 and status BLOCKED, regardless of the weighted total.
+  categories:
+    - data_exfiltration
+    - authentication_bypass
+    - tls_pinning_bypass
+    - integrity_check_bypass
+    - dynamic_code_loading
+    - hidden_network_destination
+    - credential_theft
+    - malicious_payload
+    - unauthorized_file_access
+    - anti_fraud_bypass
+
+confidence:
+  levels:
+    LOW:
+      description: Partial source, missing dependencies, unclear license or poor coverage.
+    MEDIUM:
+      description: Full source, provenance, license, dependencies and static checks completed; runtime still unknown.
+  max_level: MEDIUM
+  high_disabled_reason: Runtime behavior is not observed in the static-only model.
+
+unverified:
+  # If any required area is missing, the result may be UNVERIFIED rather than scored.
+  required_areas:
+    - source_commit
+    - license_evidence
+    - dependency_inventory
+    - provenance

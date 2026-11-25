@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shcglv/patchguard-android-patches/schemas/source.schema.json",
+  "title": "Patch source",
+  "description": "A public repository or release source tracked by PatchGuard.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "name",
+    "repository_url",
+    "host",
+    "owner",
+    "source_type",
+    "license",
+    "trust_level",
+    "tracked_branch",
+    "repository_status"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "repository_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "host": {
+      "type": "string",
+      "enum": ["github.com", "gitlab.com"]
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_type": {
+      "type": "string",
+      "enum": ["github_repository", "gitlab_repository"]
+    },
+    "license": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license_evidence": {
+      "type": ["string", "null"]
+    },
+    "trust_level": {
+      "type": "string",
+      "enum": ["OFFICIAL", "MAINTAINED", "COMMUNITY", "UNTRUSTED"]
+    },
+    "tracked_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "last_checked_commit": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "latest_release": {
+      "type": ["string", "null"]
+    },
+    "last_checked_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "repository_status": {
+      "type": "string",
+      "enum": ["ACTIVE", "ARCHIVED", "RENAMED", "UNAVAILABLE", "UNKNOWN"]
+    },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": ["string", "null"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

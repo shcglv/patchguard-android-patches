@@ -1,0 +1,56 @@
+# Allowed audit status transitions.
+# Each transition may require evidence; the CLI refuses transitions that are not listed here.
+
+transitions:
+  DISCOVERED:
+    - PENDING
+  PENDING:
+    - STATIC_AUDITING
+  STATIC_AUDITING:
+    - STATICALLY_REVIEWED
+    - UNVERIFIED
+    - REJECTED
+    - BLOCKED
+  STATICALLY_REVIEWED:
+    - UPDATE_AVAILABLE
+    - OUTDATED
+    - REJECTED
+    - BLOCKED
+  UPDATE_AVAILABLE:
+    - STATIC_AUDITING
+  OUTDATED:
+    - UPDATE_AVAILABLE
+  UNVERIFIED:
+    - PENDING
+    - STATIC_AUDITING
+  REJECTED:
+    - PENDING
+  BLOCKED: []
+
+distribution_transitions:
+  NOT_ELIGIBLE:
+    - CANDIDATE
+    - BLOCKED
+  CANDIDATE:
+    - APPROVED
+    - BLOCKED
+  APPROVED:
+    - BLOCKED
+  BLOCKED: []
+
+requirements:
+  STATICALLY_REVIEWED:
+    - source_commit
+    - source_sha256
+    - audit_scope
+    - audit_tools
+    - audit_limitations
+    - findings
+  APPROVED:
+    - decision_record
+    - approved_by
+    - decision_reason
+    - evidence
+  BLOCKED:
+    - reason
+    - evidence

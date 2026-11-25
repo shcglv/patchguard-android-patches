@@ -1,0 +1,9 @@
+# Static analysis tools used by PatchGuard.
+#
+# This manifest is populated when tools are installed. Each entry must record:
+#   name, version, source_url, sha256, license, installed_at.
+#
+# Empty until the Stage 3 toolchain is installed; do not invent versions or hashes.
+
+schema_version: 1
+tools: []

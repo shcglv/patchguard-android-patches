@@ -1,0 +1,69 @@
+# Source acquisition and trust policy.
+
+allowed_hosts:
+  - github.com
+  - raw.githubusercontent.com
+  - api.github.com
+  - gitlab.com
+  - raw.gitlab.com
+
+allowed_source_types:
+  - github_repository
+  - gitlab_repository
+
+forbidden_source_types:
+  - pastebin
+  - anonymous_file_host
+  - executable_installer
+  - unknown_binary_host
+
+acquisition:
+  mode: text-only
+  follow_submodules: false
+  follow_lfs: false
+  execute_scripts: false
+  execute_gradle: false
+  execute_tests: false
+  download_apk: false
+  decompile: false
+  max_redirects: 3
+  verify_commit_belongs_to_repository: true
+
+trust_levels:
+  OFFICIAL:
+    description: Published by the Morphe project itself.
+  MAINTAINED:
+    description: Identifiable maintainer, active history, clear license, no unresolved concerns.
+  COMMUNITY:
+    description: Public community source with limited provenance or review history.
+  UNTRUSTED:
+    description: Unknown origin or unresolved red flags; read-only analysis only.
+
+license_policy:
+  allowed_for_code_reuse:
+    - MIT
+    - Apache-2.0
+    - BSD-2-Clause
+    - BSD-3-Clause
+    - ISC
+    - GPL-2.0-only
+    - GPL-2.0-or-later
+    - GPL-3.0-only
+    - GPL-3.0-or-later
+    - LGPL-2.1-only
+    - LGPL-2.1-or-later
+    - LGPL-3.0-only
+    - LGPL-3.0-or-later
+    - MPL-2.0
+  link_only:
+    # No known license or unclear terms: catalog and analyze, never copy code.
+    - NOASSERTION
+    - LicenseRef-Unknown
+  forbidden_for_reuse:
+    - proprietary
+    - commercial
+    - NOASSERTION
+  notes:
+    - GPL and copyleft sources require preserving notices, authorship and derivative-work terms.
+    - If the license is unclear, PatchGuard links to the source and publishes only its own analysis.
+    - PatchGuard does not relicense third-party code.

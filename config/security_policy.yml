@@ -1,0 +1,89 @@
+# PatchGuard security policy configuration.
+
+audit_model:
+  mode: static-only
+  runtime_testing: false
+  apk_testing: false
+  decompilation: false
+  emulator: false
+  target_app_installation: false
+  compatibility_runtime_verification: false
+  max_confidence: MEDIUM
+
+public_claims:
+  forbidden_terms:
+    - safe
+    - fully tested
+    - verified working
+    - guaranteed secure
+    - runtime verified
+  required_qualifiers:
+    - statically reviewed
+    - not runtime tested
+    - static assessment only
+
+audit_statuses:
+  - DISCOVERED
+  - PENDING
+  - STATIC_AUDITING
+  - STATICALLY_REVIEWED
+  - UNVERIFIED
+  - REJECTED
+  - BLOCKED
+  - UPDATE_AVAILABLE
+  - OUTDATED
+
+distribution_statuses:
+  - NOT_ELIGIBLE
+  - CANDIDATE
+  - APPROVED
+  - BLOCKED
+
+approval:
+  approver: owner
+  requires_decision_record: true
+  requires_evidence: true
+  automatic_approval: false
+  critical_apps_default: BLOCKED
+
+release:
+  requires_static_gate: true
+  requires_signed_artifact: true
+  requires_recorded_sha256: true
+  prohibits_manual_asset_upload: true
+  prohibits_generated_file_edits: true
+  signing_key_location: github_secret_only
+  signing_key_commit: false
+  signing_key_logging: false
+
+critical_apps:
+  categories:
+    - banking
+    - payments
+    - crypto_wallet
+    - password_manager
+    - authenticator
+    - financial_management
+  allowed_actions:
+    - read_only_source_review
+    - documentation_review
+    - report_generation
+  forbidden_actions:
+    - patch_build
+    - bundle_inclusion
+    - distribution
+    - runtime_testing
+    - authentication_modification
+    - tls_pinning_bypass
+    - integrity_check_bypass
+    - anti_fraud_bypass
+    - financial_transaction_modification
+
+ci:
+  actions_pinned_by_sha: true
+  default_token_permissions: read
+  secrets_in_pull_requests: false
+  allow_pull_request_target_code_execution: false
+  require_static_gate_before_signing: true
+  allow_emulator_steps: false
+  allow_apk_steps: false

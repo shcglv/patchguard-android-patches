@@ -1,1 +1,11 @@
 blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/shcglv/patchguard-android-patches/security/advisories/new
+    about: Report vulnerabilities privately. Do not open a public issue with exploit details.
+  - name: Read the static audit methodology
+    url: https://github.com/shcglv/patchguard-android-patches/blob/dev/docs/methodology/static-audit.md
+    about: Understand what PatchGuard reviews and what it cannot verify.
+  - name: Morphe documentation
+    url: https://github.com/MorpheApp/morphe-documentation
+    about: Official Morphe documentation for patching and patch development.

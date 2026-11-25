@@ -1,4 +1,4 @@
-rootProject.name = "morphe-patches-template"
+rootProject.name = "patchguard-android-patches"
 
 pluginManagement {
     repositories {

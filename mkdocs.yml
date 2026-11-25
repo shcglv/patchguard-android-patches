@@ -1,0 +1,63 @@
+site_name: PatchGuard Android Patches
+site_description: Independent, static-only security review of Android patch code for Morphe-compatible bundles.
+site_url: https://shcglv.github.io/patchguard-android-patches/
+repo_url: https://github.com/shcglv/patchguard-android-patches
+repo_name: shcglv/patchguard-android-patches
+edit_uri: edit/dev/docs/
+docs_dir: docs
+strict: true
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - content.code.copy
+    - search.highlight
+    - toc.follow
+
+extra_css:
+  - assets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
+  - Methodology:
+      - Static-only audit: methodology/static-audit.md
+      - Statuses: methodology/statuses.md
+      - Risk scoring: methodology/risk-scoring.md
+  - Compatibility: compatibility.md
+  - How to use: how-to-use.md
+  - How to contribute: how-to-contribute.md
+  - Sources and credits: sources-and-credits.md
+  - Security policy: security-policy.md
+  - Threat model: threat-model.md
+  - Internal runbooks: internal/README.md

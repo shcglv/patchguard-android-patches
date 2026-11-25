@@ -1,48 +1,62 @@
-name: 🐞 Bug report
-description: Report a bug or an issue.
+name: PatchGuard patch bug
+description: Report a problem with a PatchGuard patch or its documentation.
 title: "bug: "
-labels: ["Bug report"]
+labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        # Patches template bug report
+        # PatchGuard patch bug
 
-        Before creating a new bug report, please keep the following in mind:
+        PatchGuard does not runtime-test patches and does not support APK installation. Reports that require running a target app are outside the project's model.
 
-        - **Do not submit a duplicate bug report**: Search for existing bug reports [here](https://github.com/TEMPLATE/template-patches-template/issues?q=label%3A%22Bug+report%22).
-        - **Review the contribution guidelines**: Make sure your bug report adheres to it. You can find the guidelines [here](https://github.com/TEMPLATE/template-patches-template/blob/main/CONTRIBUTING.md).
-  - type: textarea
+        For security issues, use private vulnerability reporting instead of this form.
+
+  - type: input
+    id: patch
     attributes:
-      label: Bug description
-      description: |
-        - Describe your bug in detail
-        - Add steps to reproduce the bug if possible (Step 1. ... Step 2. ...)
-        - Add images and videos if possible
+      label: Patch or page
+      description: Patch slug, file, or documentation page.
+      placeholder: com.example.app/remove-ads
     validations:
       required: true
-  - type: textarea
+
+  - type: input
+    id: version
     attributes:
-      label: Error logs
-      description: Exceptions can be captured by running `logcat | grep AndroidRuntime` in a shell.
-      render: shell
+      label: PatchGuard version or commit
+      description: Release tag or commit SHA.
+    validations:
+      required: true
+
   - type: textarea
+    id: problem
     attributes:
-      label: Solution
-      description: If applicable, add a possible solution to the bug.
+      label: Problem
+      description: What is wrong? Include exact file paths and quotations where useful.
+    validations:
+      required: true
+
   - type: textarea
+    id: expected
     attributes:
-      label: Additional context
-      description: Add additional context here.
+      label: Expected result
+      description: What should happen instead?
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Static evidence
+      description: Logs, schema errors, build output, or documentation links. Do not attach APKs or secrets.
+
   - type: checkboxes
     id: acknowledgements
     attributes:
       label: Acknowledgements
-      description: Your bug report will be closed if you don't follow the checklist below.
       options:
-        - label: I have checked all open and closed bug reports and this is not a duplicate.
+        - label: I have not attached an APK, DEX file, native library, or secret.
           required: true
-        - label: I have chosen an appropriate title.
+        - label: This report does not require runtime testing of a target application.
           required: true
-        - label: All requested information has been provided properly.
+        - label: I have searched existing issues for duplicates.
           required: true

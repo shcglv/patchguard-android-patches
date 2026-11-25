@@ -1,0 +1,48 @@
+slug: com.example.app/remove-ads
+name: Remove ads
+application: com.example.app
+source: github-example-source
+source_commit: "0123456789abcdef0123456789abcdef01234567"
+source_sha256: "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+original_author: Example Author
+description: Synthetic patch record used only to test PatchGuard tooling.
+functionality: Removes example ad views in the synthetic fixture.
+category: ADVERTISING
+version: "1.0.0"
+supported_app_versions:
+  - "1.0.0"
+required_patcher_version: "2.5.0"
+dependencies: []
+modified_components:
+  - example ad loader
+permissions: []
+network_activity: []
+audit_status: STATICALLY_REVIEWED
+distribution_status: NOT_ELIGIBLE
+audit_scope: SOURCE_CODE_ONLY
+runtime_tested: false
+apk_tested: false
+compatibility_runtime_verified: false
+risk_score: 20
+confidence_level: MEDIUM
+audit_tools:
+  - manual-review
+audit_limitations:
+  - Runtime behavior was not observed.
+  - No target APK was downloaded or tested.
+last_audited_at: "2026-11-25T00:00:00Z"
+last_updated_at: "2026-11-25T00:00:00Z"
+attribution:
+  original_author: Example Author
+  original_repository: https://github.com/example/patch-source
+  source_commit: "0123456789abcdef0123456789abcdef01234567"
+  source_license: GPL-3.0-only
+  reused_files: []
+  modifications: None; synthetic fixture.
+  attribution_text: Example Author, synthetic fixture.
+compatibility:
+  - app_version: "1.0.0"
+    basis: STATICALLY_ASSESSED
+    evidence: Declared target in the synthetic fixture.
+    notes: Not runtime tested.
+notes: Synthetic fixture. Not a real patch and not a distribution candidate.

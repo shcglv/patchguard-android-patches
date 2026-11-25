@@ -1,0 +1,49 @@
+/* PatchGuard documentation palette.
+   The project uses a graphite base with amber and mint accents.
+   These colors are original to PatchGuard and intentionally distinct from Morphe branding. */
+
+:root {
+  --pg-graphite: #101418;
+  --pg-graphite-soft: #1b222b;
+  --pg-amber: #f2a93b;
+  --pg-mint: #39d98a;
+  --pg-red: #ff5d5d;
+  --pg-blue: #5aa9ff;
+  --pg-muted: #6f8296;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--pg-graphite);
+  --md-primary-fg-color--light: #2a3441;
+  --md-primary-fg-color--dark: #0b0f14;
+  --md-accent-fg-color: #c47a12;
+  --md-typeset-a-color: #9a5f0a;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #0b0f14;
+  --md-primary-fg-color--light: #1b222b;
+  --md-primary-fg-color--dark: #000000;
+  --md-accent-fg-color: var(--pg-amber);
+  --md-typeset-a-color: var(--pg-amber);
+}
+
+/* Status colors used in tables and inline labels. */
+.pg-status-reviewed { color: var(--pg-mint); font-weight: 600; }
+.pg-status-pending { color: var(--pg-amber); font-weight: 600; }
+.pg-status-update { color: var(--pg-blue); font-weight: 600; }
+.pg-status-blocked { color: var(--pg-red); font-weight: 600; }
+.pg-status-unverified { color: var(--pg-muted); font-weight: 600; }
+
+.pg-warning {
+  border-left: 4px solid var(--pg-amber);
+  padding: 0.6rem 0.9rem;
+  background: rgba(242, 169, 59, 0.08);
+}
+
+.pg-disclaimer {
+  border: 1px solid rgba(111, 130, 150, 0.35);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  font-size: 0.85rem;
+}

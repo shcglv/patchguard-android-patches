@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shcglv/patchguard-android-patches/schemas/app.schema.json",
+  "title": "Application",
+  "description": "An Android application referenced by the PatchGuard catalog.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "name",
+    "package_name",
+    "category",
+    "security_class"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "package_name": {
+      "type": "string",
+      "pattern": "^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z][a-zA-Z0-9_]*)+$"
+    },
+    "developer": {
+      "type": ["string", "null"]
+    },
+    "category": {
+      "type": "string",
+      "minLength": 1
+    },
+    "security_class": {
+      "type": "string",
+      "enum": ["NORMAL", "CRITICAL"]
+    },
+    "supported_versions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "official_website": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "notes": {
+      "type": ["string", "null"]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

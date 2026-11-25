@@ -1,105 +1,117 @@
-# 👋🧩 Morphe Patches template
+<div align="center">
 
-Template repository for Morphe Patches.
+<img src="assets/logo.svg" alt="PatchGuard logo" width="96" height="96">
 
-## ❓ About
+# PatchGuard Android Patches
 
-Patches for apps I like.
+**Independent, static-only security review of Android patch code for Morphe-compatible bundles.**
 
-<!-- TODO: Update this about section with a brief introduction/summary about this repo and what it offers. -->
+[![License: GPL-3.0-only](https://img.shields.io/badge/license-GPL--3.0--only-2ea043.svg)](LICENSE)
+[![Audit model: static-only](https://img.shields.io/badge/audit%20model-static--only-f2a93b.svg)](docs/methodology/static-audit.md)
 
-### How to use these patches
+</div>
 
-Click the button below, or manually add this repo url to Morphe Manager: https://github.com/xyz-user/xyz-patches
+> **This is an independent community project. It is not affiliated with, endorsed by, or maintained by Morphe or the authors of the applications and patches referenced here.**
 
-<a href="https://morphe.software/add-source?github=xyz-user/xyz-patches">
-  <img src=".github/assets/add-to-morphe.svg" alt="Add to Morphe" height="48">
-</a>
+> [!IMPORTANT]
+> **Static-only review.** PatchGuard reviews patch source code, dependencies, build scripts, provenance and metadata. It does **not** download target APKs, decompile applications, run Android emulators, install modified apps, or verify runtime behavior. A `STATICALLY REVIEWED` status means the planned static checks for a specific source revision were completed. It does not mean the patch is safe, working, or compatible at runtime.
 
-## 🩹 Patches list
+## What this project is
+
+PatchGuard is a public catalog and audit trail for Android patch code used with Morphe-compatible patch bundles. It focuses on questions that can be answered from source and metadata:
+
+- Where did this patch come from, and which exact revision was reviewed?
+- What does the patch code change, and what dependencies does it bring?
+- Does it contain suspicious reflection, dynamic code loading, hidden network destinations, secret material, or security-sensitive modifications?
+- Is the license compatible with the way the patch is distributed?
+- What changed since the last review, and does the new revision require a fresh audit?
+
+The repository also contains PatchGuard's own Morphe-compatible patch bundle. Every PatchGuard patch is reviewed under the same static-only policy before it can be considered for distribution.
+
+## What this project is not
+
+- It is not a malware scanner that can prove an app or patch is safe.
+- It is not a runtime compatibility test. No target app is patched or launched here.
+- It is not an official Morphe project and does not speak for Morphe.
+- It does not distribute third-party APKs or third-party patch code.
+- It does not mark a patch as `APPROVED` automatically. `APPROVED` is a separate, explicit owner decision.
+
+## Patch catalog
 
 <!-- PATCHES_START -->
 
-<!-- Do not modify this section by hand. The patch list is generated when release.yml creates a new release.
-     
-     This section shows one row for each app. The details of each patch are in PATCHES.md,
-     which is generated at the same time.
+No PatchGuard patch release has been published yet. After the first release, this section is generated from `patches-list.json` by the official Morphe release workflow.
 
-     If you wish to manually keep this list updated then remove the PATCHES_START and PATCHES_END 
-     comment blocks entirely. -->
-
-#### A list of your patches will automatically be shown here after your first patches release is created.
-
-&nbsp;
-
-## 🚀 Getting development started
-
-To start using this template, follow these steps:
-
-1. [Setup](https://github.com/MorpheApp/morphe-documentation/blob/main/docs/morphe-development/README.md) your development environment including adding a GitHub PAT as described [here](https://github.com/MorpheApp/morphe-patcher/blob/main/docs/2_1_setup.md#-prepare-the-environment).
-2. [Create a new repository using this template](https://github.com/new?template_name=morphe-patches-template&template_owner=MorpheApp). Select create a new repository, and **enable 'Include all branches'** 
-3. Enable "Allow GitHub Actions to create and approve pull requests" in your repo Settings > Actions > General > Workflow permissions
-4. Update the [build.gradle.kts](patches/build.gradle.kts) file (Specifically, the 
-   [group of the project](patches/build.gradle.kts#L1), and the [About](patches/build.gradle.kts#L6-L11))
-5. Update the [README.md](README.md) file to be specific of your repo, and update the links in the [issue templates](.github/ISSUE_TEMPLATE).
-6. Choose a name for your patches project. Keep in mind you must use a name that does not 
-   imply authorship by the Morphe open source project. If unsure, then simply name these
-   patches after yourself ("UserXYZ Morphe patches"). See the [NOTICE](NOTICE) for details. 
-7. (Optional): Add `patches-bundle.png` to the project if you want a custom icon to show in
-   Morphe Manager instead of your GitHub profile avatar.
-8. (Optional): Set `INCLUDE_APP_ICONS = True` in [generate_patches_readme.py](.github/scripts/generate_patches_readme.py) to show app icons in the generated patches list.
-9. (Optional): Sign your releases, so Morphe Manager refuses a release that was changed or swapped after you published it:
-   1. Run `./gradlew generateSigningKey`. It creates `morphe-signing.pub` and `morphe-signing.key`.
-   2. Commit `morphe-signing.pub`. Never commit `morphe-signing.key`, it is already ignored by git.
-   3. Add the content of `morphe-signing.key` as the `MORPHE_SIGNING_KEY` secret in your repo
-      Settings > Secrets and variables > Actions, then keep a backup of it somewhere safe and delete the file.
-
-   Every release is signed from then on. If you lose the key or it leaks, create a new one the same way;
-   users then have to confirm the new key in Morphe Manager before they get your next release.
-
-🎉 You are now ready to start creating patches!
-
-## 🧑‍💻 Dev usage
-
-To develop and release your Patches using this template:
-
-- **Make all changes to the `dev` branch.**
-- For local development work build your patches using the gradle task `./gradlew buildAndroid` to generate the mpp file found in `patches/build/libs/patches-*.mpp`. Apply your patches locally using Morphe Desktop tool like any other patch bundle.
-- Always use [Semantic commit](https://kapeli.com/cheat_sheets/Semantic_Commits.docset/Contents/Resources/Documents/index) messages for commits. To keep it simple use only 3 commit message types: 
-  - `feat: Added a new feature`
-  - `fix: Some problem now fixed`
-  - `chore: Random change you do not want in the user facing changelog`
-- Commits of `fix:` and `feat:` will automatically generate new pre-releases and `chore:` will not create a new release.
-- Users can apply your dev branch releases by enabling `pre-release` in Morphe Manager patch sources.
-- When your dev branch is ready, and you want a stable release, merge dev branch to main (do not squash, and only merge).
-- **Always use semantic release (release.yml)**. Do not manually upload or create releases by hand
-  because many files must be updated and release.yml handles everything.
-
-## 🤓 Tips
-- See the [patcher documentation](https://github.com/MorpheApp/morphe-patcher/blob/main/docs/1_patcher_intro.md) for more examples of creating patches and fingerprints.
-- Do not use AI to create new release scripts. The `release.yml` here already handles everything.
-  If you need something custom with your releases then modify the existing `release.yml`
-  and `.releaserc` instead of writing everything new from scratch.
-- Do not manually edit or manually commit any generated files such as: `patches-list.json`,
-  `patches-bundle.json`, `PATCHES.md`, `CHANGELOG.md`.  These files will be automatically updated by `release.yml`.
-- Do not force push any semantic release commits as that will break all future releases.
-  If you need to fix a broken release, it's always easiest to create a new release instead of 
-  fixing an existing release.
-
-
-<!-- The patches end tag is intentionally placed here so the first release will clean up 
-     this readme of all developer instructions above. -->
 <!-- PATCHES_END -->
 
-### 🛠️ Building locally
+The full audit catalog is in [`catalog/`](catalog/) and the published documentation site. The table above only lists PatchGuard's own bundle; external patches are cataloged separately and are never presented as part of the PatchGuard bundle.
 
-- Run `./gradlew buildAndroid`
-- The built patches .mpp file is found in `patches/build/libs/patches-*.mpp`
-- Patch the mpp file using [Morphe-Desktop](https://github.com/MorpheApp/morphe-desktop)
-  like any other patch bundle.
+## Audit status legend
 
-See the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation) for more information.
+| Status | Meaning |
+|---|---|
+| `DISCOVERED` | A source or patch was recorded; no review yet. |
+| `PENDING` | Queued for static review. |
+| `STATIC_AUDITING` | Static review is in progress. |
+| `STATICALLY_REVIEWED` | The planned static checks for a specific source revision are complete. Runtime behavior is still unknown. |
+| `UNVERIFIED` | Not enough source, metadata, license or provenance data for a meaningful review. |
+| `REJECTED` | The patch failed review or policy. |
+| `BLOCKED` | A security, license or critical-app policy prevents distribution. |
+| `UPDATE_AVAILABLE` | The upstream source changed and a new static review is required. |
+| `OUTDATED` | The reviewed revision no longer matches current app or source versions. |
 
-## 📜 License
+`APPROVED` is not an audit status. It is a separate distribution decision by the project owner and is recorded in `catalog/decisions/`.
 
-UserXYZ Patches are licensed under the [GNU General Public License v3.0](LICENSE)
+## How to use PatchGuard patches
+
+PatchGuard's own bundle is intended for use with Morphe Manager once a release exists:
+
+```text
+https://github.com/shcglv/patchguard-android-patches
+```
+
+Until a release with a valid `patches-bundle.json` and a signed `.mpp` asset is published, the repository is not a usable patch source. The catalog is readable immediately; the bundle is not.
+
+> [!WARNING]
+> Patch sources decide what ends up inside patched apps. Only add sources you trust. PatchGuard publishes its review evidence, but static review cannot prove runtime safety or compatibility.
+
+## Security methodology
+
+Read [`docs/methodology/static-audit.md`](docs/methodology/static-audit.md) before relying on any status in this repository. In short:
+
+- We review source code, fingerprints, hooks, extensions, build scripts, dependencies, licenses, network strings, secrets and provenance.
+- We record exact commit SHAs and SHA-256 hashes.
+- We document what we could not verify.
+- We never claim that the absence of findings is proof of safety.
+- We never claim runtime compatibility without a runtime test, and this project does not perform runtime tests.
+
+## Reporting a vulnerability
+
+Please use GitHub's private vulnerability reporting for this repository:
+
+[Security advisories](https://github.com/shcglv/patchguard-android-patches/security/advisories/new)
+
+Do not open a public issue for a suspected vulnerability in PatchGuard tooling, a PatchGuard patch, or a cataloged third-party patch. See [`SECURITY.md`](SECURITY.md) for scope and expectations.
+
+## Contributing
+
+Contributions are welcome under the terms in [`CONTRIBUTING.md`](CONTRIBUTING.md). In particular:
+
+- Do not submit APKs, DEX files, native libraries, or decompiled application code.
+- Do not submit third-party patch code without a compatible license and full attribution.
+- Do not claim runtime testing that was not performed.
+- All changes go through a pull request and CI.
+
+## Credits and sources
+
+PatchGuard is built on the official [Morphe patches template](https://github.com/MorpheApp/morphe-patches-template) and follows its release conventions. Morphe is mentioned only as a compatible platform. See [`CREDITS.md`](CREDITS.md), [`SOURCES.md`](SOURCES.md), and [`NOTICE`](NOTICE).
+
+## License
+
+PatchGuard code and documentation are licensed under the **GNU General Public License v3.0 only**. See [`LICENSE`](LICENSE). Third-party materials retain their original licenses and are not relicensed by PatchGuard.
+
+---
+
+<div align="center">
+<sub>Static review records evidence, not certainty.</sub>
+</div>

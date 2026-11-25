@@ -1,0 +1,87 @@
+# PatchGuard runtime configuration.
+# Public, non-secret. Secrets never belong in this file.
+
+project:
+  name: PatchGuard Android Patches
+  repository: https://github.com/shcglv/patchguard-android-patches
+  owner: shcglv
+  default_branch: main
+  development_branch: dev
+  license: GPL-3.0-only
+
+paths:
+  # Local working database. Gitignored; rebuildable from catalog/ and audits/.
+  database: .patchguard/patchguard.sqlite3
+  logs: .patchguard/logs
+  cache: .patchguard/cache
+  # Quarantine is outside the repository and never committed.
+  quarantine: E:/patchguard/quarantine
+
+audit:
+  mode: static-only
+  runtime_testing: false
+  apk_testing: false
+  compatibility_runtime_verification: false
+  max_confidence: MEDIUM
+  stale_after_days: 90
+
+acquisition:
+  # Only text-like files are downloaded. Binaries, APKs, DEX and native libraries are skipped.
+  allowed_extensions:
+    - .kt
+    - .kts
+    - .java
+    - .smali
+    - .xml
+    - .json
+    - .yml
+    - .yaml
+    - .md
+    - .txt
+    - .properties
+    - .pro
+    - .gradle
+    - .js
+    - .ts
+    - .sh
+    - .bat
+    - .ps1
+    - .toml
+    - .cfg
+    - .ini
+  blocked_extensions:
+    - .apk
+    - .apkm
+    - .xapk
+    - .dex
+    - .jar
+    - .aar
+    - .so
+    - .dll
+    - .exe
+    - .bin
+    - .zip
+    - .tar
+    - .gz
+    - .7z
+    - .png
+    - .jpg
+    - .jpeg
+    - .webp
+    - .gif
+    - .ttf
+    - .otf
+  max_file_bytes: 1048576
+  max_files: 5000
+  max_total_bytes: 52428800
+
+network:
+  user_agent: PatchGuard/0.1 (+https://github.com/shcglv/patchguard-android-patches)
+  timeout_seconds: 30
+  github_api: https://api.github.com
+  gitlab_api: https://gitlab.com/api/v4
+
+logging:
+  level: INFO
+  format: text
+  redact_secrets: true

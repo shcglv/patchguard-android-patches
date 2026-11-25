@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shcglv/patchguard-android-patches/schemas/release.schema.json",
+  "title": "PatchGuard release record",
+  "description": "Metadata for one PatchGuard bundle release.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "source_commit",
+    "release_date",
+    "artifact_hash",
+    "static_gate_passed",
+    "release_status"
+  ],
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^v?[0-9]+\\.[0-9]+\\.[0-9]+([.-][0-9A-Za-z.-]+)?$"
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "release_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "artifact_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "signing_key_fingerprint": {
+      "type": ["string", "null"]
+    },
+    "audit_reference": {
+      "type": ["string", "null"]
+    },
+    "static_gate_passed": {
+      "const": true
+    },
+    "runtime_tested": {
+      "const": false
+    },
+    "release_status": {
+      "type": "string",
+      "enum": ["PRE_RELEASE", "STABLE", "WITHDRAWN"]
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  }
+}

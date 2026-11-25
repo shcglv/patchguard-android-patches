@@ -1,0 +1,57 @@
+# Critical application policy.
+#
+# Categories are intentionally broad, but a package is treated as critical only after
+# a maintainer confirms it. Unknown applications in a financial category are blocked
+# for distribution until reviewed.
+#
+# No APK is downloaded, decompiled, installed or run for these applications.
+
+categories:
+  banking:
+    description: Retail and business banking, neobanks, brokerage cash accounts.
+  payments:
+    description: Payment wallets, money transfer, card management, point-of-sale.
+  crypto_wallet:
+    description: Custodial and non-custodial crypto wallets, signing tools.
+  password_manager:
+    description: Password vaults, credential managers, secure notes.
+  authenticator:
+    description: TOTP/HOTP authenticators, hardware token companions, SSO approvers.
+  financial_management:
+    description: Budgeting, tax, payroll, invoicing and financial planning.
+
+packages: []
+
+# Package-name fragments are hints for triage, not automatic proof.
+# A match requires maintainer confirmation before an application is added to `packages`.
+package_name_hints:
+  - bank
+  - banking
+  - wallet
+  - pay
+  - payment
+  - card
+  - crypto
+  - authenticator
+  - password
+  - vault
+  - finance
+  - brokerage
+  - invest
+
+policy:
+  allowed:
+    - read_only_source_review
+    - documentation_review
+    - report_generation
+  forbidden:
+    - patch_build
+    - bundle_inclusion
+    - distribution
+    - runtime_testing
+    - authentication_modification
+    - tls_pinning_bypass
+    - integrity_check_bypass
+    - anti_fraud_bypass
+    - financial_transaction_modification
+  default_distribution_status: BLOCKED

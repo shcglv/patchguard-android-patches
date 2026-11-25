@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">PatchGuard Android Patches</title>
+  <desc id="desc">Banner: PatchGuard logo, project name and static-only review tagline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B0F14"/>
+      <stop offset="0.55" stop-color="#121A23"/>
+      <stop offset="1" stop-color="#0B0F14"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2A93B"/>
+      <stop offset="1" stop-color="#39D98A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="320" rx="24" fill="url(#bg)"/>
+
+  <!-- Faint stitch grid -->
+  <g stroke="#223040" stroke-width="2" opacity="0.55">
+    <path d="M0 80 H1200" stroke-dasharray="14 18"/>
+    <path d="M0 240 H1200" stroke-dasharray="14 18"/>
+  </g>
+
+  <!-- Mark -->
+  <g transform="translate(64 64) scale(0.375)">
+    <path d="M256 36 L436 104 V258 C436 360 356 438 256 476 C156 438 76 360 76 258 V104 Z"
+          fill="#101418" stroke="url(#edge)" stroke-width="18" stroke-linejoin="round"/>
+    <path d="M168 196 H344" stroke="#F2A93B" stroke-width="16" stroke-linecap="round" stroke-dasharray="30 22"/>
+    <path d="M168 256 H344" stroke="#39D98A" stroke-width="16" stroke-linecap="round" stroke-dasharray="30 22"/>
+    <path d="M168 316 H288" stroke="#F2A93B" stroke-width="16" stroke-linecap="round" stroke-dasharray="30 22"/>
+    <circle cx="344" cy="316" r="16" fill="#39D98A"/>
+    <circle cx="344" cy="316" r="7" fill="#101418"/>
+  </g>
+
+  <text x="280" y="146" fill="#F4F7FA" font-family="Segoe UI, Arial, sans-serif" font-size="58" font-weight="700" letter-spacing="1">PatchGuard</text>
+  <text x="282" y="196" fill="#A9B7C6" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400">Android Patches</text>
+  <text x="282" y="244" fill="#F2A93B" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="600">STATIC-ONLY REVIEW  ·  NO RUNTIME TESTING</text>
+  <text x="282" y="276" fill="#6F8296" font-family="Segoe UI, Arial, sans-serif" font-size="16">Independent community project · not affiliated with Morphe</text>
+</svg>

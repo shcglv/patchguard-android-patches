@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shcglv/patchguard-android-patches/schemas/patch.schema.json",
+  "title": "Patch record",
+  "description": "A patch reviewed under PatchGuard's static-only model.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "slug",
+    "name",
+    "application",
+    "source",
+    "source_commit",
+    "source_sha256",
+    "category",
+    "audit_status",
+    "distribution_status",
+    "audit_scope",
+    "runtime_tested",
+    "apk_tested",
+    "compatibility_runtime_verified",
+    "last_audited_at",
+    "audit_limitations"
+  ],
+  "properties": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._/-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "application": {
+      "type": "string",
+      "description": "Application slug."
+    },
+    "source": {
+      "type": "string",
+      "description": "Source slug."
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "original_author": {
+      "type": ["string", "null"]
+    },
+    "description": {
+      "type": ["string", "null"]
+    },
+    "functionality": {
+      "type": ["string", "null"]
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "UI",
+        "ADVERTISING",
+        "PRIVACY",
+        "FUNCTIONALITY",
+        "NETWORK",
+        "SECURITY_SENSITIVE"
+      ]
+    },
+    "version": {
+      "type": ["string", "null"]
+    },
+    "supported_app_versions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "required_patcher_version": {
+      "type": ["string", "null"]
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "modified_components": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "permissions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "network_activity": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "audit_status": {
+      "type": "string",
+      "enum": [
+        "DISCOVERED",
+        "PENDING",
+        "STATIC_AUDITING",
+        "STATICALLY_REVIEWED",
+        "UNVERIFIED",
+        "REJECTED",
+        "BLOCKED",
+        "UPDATE_AVAILABLE",
+        "OUTDATED"
+      ]
+    },
+    "distribution_status": {
+      "type": "string",
+      "enum": ["NOT_ELIGIBLE", "CANDIDATE", "APPROVED", "BLOCKED"]
+    },
+    "audit_scope": {
+      "const": "SOURCE_CODE_ONLY"
+    },
+    "runtime_tested": {
+      "const": false
+    },
+    "apk_tested": {
+      "const": false
+    },
+    "compatibility_runtime_verified": {
+      "const": false
+    },
+    "risk_score": {
+      "type": ["integer", "null"],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "confidence_level": {
+      "type": ["string", "null"],
+      "enum": ["LOW", "MEDIUM", null]
+    },
+    "audit_tools": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "audit_limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "audit_ids": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "compatibility": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["basis"],
+        "properties": {
+          "app_version": { "type": ["string", "null"] },
+          "basis": {
+            "type": "string",
+            "enum": ["DECLARED", "STATICALLY_ASSESSED", "NOT_RUNTIME_TESTED"]
+          },
+          "evidence": { "type": ["string", "null"] },
+          "notes": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "attribution": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "original_author": { "type": ["string", "null"] },
+        "original_repository": { "type": ["string", "null"] },
+        "source_commit": { "type": ["string", "null"] },
+        "source_license": { "type": ["string", "null"] },
+        "inspiration_source": { "type": ["string", "null"] },
+        "related_issue": { "type": ["string", "null"] },
+        "related_pull_request": { "type": ["string", "null"] },
+        "upstream_documentation": { "type": ["string", "null"] },
+        "reused_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "modifications": { "type": ["string", "null"] },
+        "attribution_text": { "type": ["string", "null"] }
+      }
+    },
+    "last_audited_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "last_updated_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  }
+}

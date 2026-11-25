@@ -1,0 +1,80 @@
+name: Source or patch suggestion
+description: Suggest a public patch source or a specific patch for static review.
+title: "source: "
+labels: ["source suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # Source or patch suggestion
+
+        PatchGuard reviews patch source code and metadata only. Do not attach APKs, DEX files, native libraries, or decompiled application code.
+
+        Before submitting, check that the source is public and that you can name an exact commit or release tag.
+
+  - type: input
+    id: repository
+    attributes:
+      label: Repository URL
+      description: Public GitHub or GitLab repository.
+      placeholder: https://github.com/owner/repo
+    validations:
+      required: true
+
+  - type: input
+    id: revision
+    attributes:
+      label: Exact revision
+      description: Commit SHA or release tag to review. Do not use a moving branch name as the only reference.
+      placeholder: 0123456789abcdef0123456789abcdef01234567
+    validations:
+      required: true
+
+  - type: input
+    id: application
+    attributes:
+      label: Application
+      description: App name, package name, and category (for example social, media, tools, finance).
+      placeholder: Example App (com.example.app), media
+    validations:
+      required: true
+
+  - type: input
+    id: patch
+    attributes:
+      label: Patch name
+      description: The specific patch or file to review, if known.
+      placeholder: Remove ads
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: What the patch does
+      description: Describe the functionality as claimed by the author. Do not claim that it is safe.
+    validations:
+      required: true
+
+  - type: input
+    id: license
+    attributes:
+      label: License and author
+      description: License identifier, license file, and original author, if known.
+      placeholder: GPL-3.0-only, author name
+
+  - type: textarea
+    id: concerns
+    attributes:
+      label: Concerns or context
+      description: Anything that deserves attention, such as network access, reflection, native code, or a recent ownership change.
+
+  - type: checkboxes
+    id: acknowledgements
+    attributes:
+      label: Acknowledgements
+      options:
+        - label: I have not attached an APK, DEX file, native library, or decompiled application code.
+          required: true
+        - label: The source is public and the revision is pinned.
+          required: true
+        - label: I understand that PatchGuard does not runtime-test patches.
+          required: true

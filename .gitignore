@@ -132,3 +132,28 @@ node_modules/
 # Ignore IDEA files
 .idea/
 local.properties
+
+### PatchGuard
+# Local working database, logs, cache and backups (rebuildable from Git).
+.patchguard/
+# Local tools and virtual environments.
+.tools/
+.venv/
+venv/
+# MkDocs build output.
+site/
+docs/site/
+# SQLite sidecar files.
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+# Local quarantine (normally outside the repository too).
+quarantine/
+
+### Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/

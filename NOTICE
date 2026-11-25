@@ -19,3 +19,29 @@ provided that such references:
 - Are accurate, factual, and non-misleading;
 - Do not suggest authorship by the Morphe project; and
 - Appear only in a secondary or descriptive context, not as part of the product or project name.
+
+PatchGuard Android Patches NOTICE
+=================================
+
+PatchGuard Android Patches
+Copyright (C) 2026 PatchGuard contributors
+
+This project is an independent community project. It is not affiliated with,
+endorsed by, or maintained by Morphe or the authors of the applications and
+patches referenced here.
+
+The project name, logo and visual identity are original to PatchGuard and are
+not derived from the Morphe name, logo or branding. References to Morphe are
+descriptive compatibility references only.
+
+PatchGuard's own code and documentation are licensed under the GNU General
+Public License, version 3 only (GPL-3.0-only), unless a file states otherwise.
+Third-party materials retain their original licenses and are not relicensed by
+PatchGuard. Third-party code is not copied into this repository without a
+compatible license and attribution.
+
+PatchGuard does not distribute target application APKs, decompiled application
+code, or third-party patch code that it is not permitted to redistribute.
+
+Static review is not a safety certificate. PatchGuard does not claim that any
+patch is safe, working, or runtime-compatible.

@@ -1,0 +1,16 @@
+slug: github-example-source
+name: Example Source
+repository_url: https://github.com/example/patch-source
+host: github.com
+owner: example
+source_type: github_repository
+license: GPL-3.0-only
+license_evidence: Synthetic LICENSE fixture for tooling tests.
+trust_level: COMMUNITY
+tracked_branch: main
+last_checked_commit: "0123456789abcdef0123456789abcdef01234567"
+latest_release: v1.0.0
+last_checked_at: "2026-11-25T00:00:00Z"
+repository_status: ACTIVE
+aliases: []
+notes: Synthetic fixture used only to test PatchGuard tooling. Not a real source record.

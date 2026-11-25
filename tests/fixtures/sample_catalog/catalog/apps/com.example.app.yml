@@ -1,0 +1,10 @@
+slug: com.example.app
+name: Example App
+package_name: com.example.app
+developer: Example Developer
+category: tools
+security_class: NORMAL
+supported_versions:
+  - "1.0.0"
+official_website: https://example.com
+notes: Synthetic fixture used only to test PatchGuard tooling. Not a real application record.

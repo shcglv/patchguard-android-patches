@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/shcglv/patchguard-android-patches/schemas/audit.schema.json",
+  "title": "Static audit record",
+  "description": "An immutable record of one static review for one patch revision.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "patch",
+    "source_commit",
+    "source_sha256",
+    "audit_date",
+    "audit_type",
+    "auditor",
+    "audit_scope",
+    "runtime_tested",
+    "apk_tested",
+    "compatibility_runtime_verified",
+    "audit_tools",
+    "coverage",
+    "limitations",
+    "findings",
+    "result",
+    "risk_score",
+    "confidence_level",
+    "report_path"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._/-]*$"
+    },
+    "patch": {
+      "type": "string"
+    },
+    "source_commit": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "audit_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "audit_type": {
+      "type": "string",
+      "enum": ["INITIAL", "RE_AUDIT", "UPDATE_IMPACT", "LICENSE_REVIEW"]
+    },
+    "auditor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "audit_scope": {
+      "const": "SOURCE_CODE_ONLY"
+    },
+    "runtime_tested": {
+      "const": false
+    },
+    "apk_tested": {
+      "const": false
+    },
+    "compatibility_runtime_verified": {
+      "const": false
+    },
+    "audit_tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "version"],
+        "properties": {
+          "name": { "type": "string" },
+          "version": { "type": "string" },
+          "sha256": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_code", "dependencies", "network", "manifest", "secrets", "license", "provenance"],
+      "properties": {
+        "source_code": { "type": "string", "enum": ["FULL", "PARTIAL", "NONE"] },
+        "dependencies": { "type": "string", "enum": ["FULL", "PARTIAL", "NONE"] },
+        "network": { "type": "string", "enum": ["STATIC_ONLY", "NONE"] },
+        "manifest": { "type": "string", "enum": ["SOURCE_ONLY", "NONE"] },
+        "secrets": { "type": "string", "enum": ["FULL", "PARTIAL", "NONE"] },
+        "license": { "type": "string", "enum": ["VERIFIED", "PARTIAL", "UNKNOWN"] },
+        "provenance": { "type": "string", "enum": ["FULL", "PARTIAL", "UNKNOWN"] }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "severity", "category", "description"],
+        "properties": {
+          "id": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"]
+          },
+          "category": { "type": "string" },
+          "description": { "type": "string" },
+          "file_path": { "type": ["string", "null"] },
+          "line_reference": { "type": ["string", "null"] },
+          "evidence": { "type": ["string", "null"] },
+          "remediation": { "type": ["string", "null"] },
+          "status": {
+            "type": "string",
+            "enum": ["OPEN", "ACCEPTED", "FIXED", "FALSE_POSITIVE", "NOT_APPLICABLE"]
+          }
+        }
+      }
+    },
+    "result": {
+      "type": "string",
+      "enum": ["STATICALLY_REVIEWED", "UNVERIFIED", "REJECTED", "BLOCKED"]
+    },
+    "risk_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "confidence_level": {
+      "type": "string",
+      "enum": ["LOW", "MEDIUM"]
+    },
+    "report_path": {
+      "type": "string"
+    },
+    "notes": {
+      "type": ["string", "null"]
+    }
+  }
+}
