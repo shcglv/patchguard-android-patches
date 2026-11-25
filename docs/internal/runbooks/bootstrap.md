@@ -64,6 +64,25 @@ force-push’ить. Вместо этого создан пустой репо�
 - `Release` отключён до Stage 6, чтобы первый push не создал релиз и не
   расходовал CI на сборку без `read:packages`.
 
+## Известные открытые риски
+
+- **minimatch / GHSA-g3hv-75wg-m249 (medium).** Уязвимость в транзитивной
+  dev-зависимости npm (`package-lock.json`, внутри bundled npm). Патч
+  `minimatch >= 11.0.1` несовместим с текущими диапазонами родителей; алерт
+  затрагивает CI-инструменты, а не релизный `.mpp`, и требует
+  attacker-controlled glob pattern. Решение: отслеживать обновление
+  semantic-release/npm, не принимать внешние glob-шаблоны в CI. Алерт не
+  закрывать вручную без устранения причины.
+- **`sha_pinning_required`.** GitHub отклонил политику для personal-репозитория
+  («all actions must be from a repository owned by shcglv»). Политика отключена;
+  actions закреплены полным SHA в workflow-файлах. Это контролируется ревью,
+  но не GitHub policy.
+- **PR/required checks.** Пока не включены: нужен release-identity, иначе
+  официальный semantic-release не сможет пушить generated-файлы. До этого
+  действует ruleset только против deletion/force-push.
+- **`read:packages` PAT.** Локальная сборка `.mpp` ещё не проверялась; PAT
+  отсутствует. Это предусловие Stage 6, а не Stage 0.
+
 ## Что осталось до Stage 6
 
 1. Создать PAT `read:packages` и сохранить в `~/.gradle/gradle.properties`
